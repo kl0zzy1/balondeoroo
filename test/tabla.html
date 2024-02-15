@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio</title>
+    <link rel="stylesheet" href="./css/style.css" />
+
+
+</head>
+
+<body onload="loadPage()">
+  <label id="dark-change"></label>
+  <style>
+      html,body{
+        scroll-behavior:smooth;
+      }
+        .demo th {
+            border: 1px sólido #050505;
+            padding: 5px;
+            background: #ffbb00;
+        }
+
+        .demo td {
+            padding: 5px;
+        }
+
+        .header-table {
+            background-color: ffbb00;
+        }
+    </style>
+    <div id="cuenta"></div>
+</body>
+<script src="../login/js/simplyCountdown.min.js"></script>
+<script src="../login/js/countdown.js"></script>
+<script>
+    async function fetchHtmlAsText(url) {
+        const response = await fetch(url);
+        return await response.text();
+    }
+    function volverLogin() {
+        window.location = "../index.html";
+    }
+    window.onload = async function () {
+        const isLogged = localStorage.getItem("isLogged");
+        if (isLogged == "true") {
+            var myDiv = document.createElement("div");
+            myDiv.id = 'content';
+            myDiv.innerHTML = await fetchHtmlAsText("tablacontent.html");
+            document.body.appendChild(myDiv);
+            //document.body.append = await fetchHtmlAsText("tablacontent.html");
+        } else {
+            document.body.innerHTML =
+                "<h1>No tienes permisos para acceder </h1> <button style='background: #FB2006; color:white; padding:1rem;' onclick='volverLogin()'>Volver al login</button>";
+        }
+    };
+    window.onbeforeunload = () => {
+        localStorage.setItem("isLogged", false);
+    };
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src="tabla.js"></script>
+
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Panel</title>
+  
+    <style>
+        .tabla {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tabla button {
+            max-width: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <div id="block" style="block; position: fixed; z-index: 100; background-color: black; opacity: 25%;top: -5000px;right: -5000px;bottom: -5000px;left: -5000px;"></div>
+
+    <div id="message" style="display: block; position: fixed; z-index: 10000; background-color: white; opacity: 100%;">
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1rem;width:100vw;">
+            <h3 hidden>Titulo</h3>
+            <p>Si aceptas esto es porque vas a hacer buen uso del panel, si nos damos cuenta de que haces un mal uso del panel nos veremos obligados a cambiar la contraseña del panel.</p>
+  <span style="display:flex;gap:1rem;">
+    
+            <button onclick="aceptar()">SI estoy de acuerdo</button>
+            <button onclick="rechazar()">NO estoy de acuerdo</button>
+  </span>
+
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h1>Panel</h1>
+        <h2 style="color:gold; font-size:3rem; text-shadow:0px 0px 4px black;" hidden id="nombrecito">Nombre</h2>
+        <input hidden type="text" id="nombre" placeholder="nombre" class="form-control my-3">
+
+        <input hidden type="text" id="apellido" placeholder="pibas" class="form-control my-3">
+
+        <input hidden type="text" id="fecha" placeholder="puntos" class="form-control my-3">
+        <button hidden class="btn btn-info" id="boton" onclick="guardar()">Guardar</button>
+        <div style="display:flex;flex-direction:column;" id="tabla">
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Grupos</h1>
+        <h2 style="color:gold; font-size:3rem; text-shadow:0px 0px 4px black;" hidden id="nombrecito2">Nombre</h2>
+        <input hidden type="text" id="nombre2" placeholder="nombre" class="form-control my-3">
+
+        <input hidden type="text" id="grupo2" placeholder="equipo" class="form-control my-3">
+
+        <input hidden type="text" id="apellido2" placeholder="pibas" class="form-control my-3">
+
+        <input hidden type="text" id="fecha2" placeholder="puntos" class="form-control my-3">
+        <button hidden class="btn btn-info" id="boton2" onclick="guardar2()">Guardar</button>
+        <div style="display:flex;flex-direction:column;" id="tabla2">
+        </div>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="panel.js"></script>
+</body>
+
+</html>

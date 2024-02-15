@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balon de oro</title>
+  <link rel="stylesheet" href="./css/style.css" />
+   
+</head>
+
+<body onload="loadPage()">
+  <style>
+    table {
+      width: 80% !important;
+    }
+
+    .demo th {
+      border: 1px sólido #050505;
+      padding: 5px;
+      background: #ffbb00;
+    }
+
+    .demo td {
+      padding: 5px;
+    }
+
+    .header-table {
+      background-color: ffbb00;
+    }
+
+    nav {
+      width: 100vw;
+      text-align: center;
+      display: flex,
+    }
+  </style>
+
+</body>
+<script>
+  async function fetchHtmlAsText(url) {
+    const response = await fetch(url);
+    return await response.text();
+  }
+  function volverLogin() {
+    window.location = "../index.html"
+  }
+  window.onload = async function () {
+    const isLogged = localStorage.getItem("isLogged")
+    if (isLogged == "true") {
+      document.body.innerHTML = await fetchHtmlAsText("tablacontent.html");
+    }
+    else {
+      document.body.innerHTML = "<h1>No tienes permisos para acceder </h1> <button style='background: #FB2006; color:white; padding:1rem;' onclick='volverLogin()'>Volver al login</button>"
+
+    }
+  }
+  window.onbeforeunload = () => {
+    localStorage.setItem("isLogged", false)
+  }
+
+
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="panel.js"></script>
+
+<nav>
+
+  <a href="#Clasificación">Clasificación | </a>
+  <a href="#persons">Participantes | </a>
+  <a href="#Reglas">Reglas | </a>
+  <a href="#ganadores">Ganadores | </a>
+  <a href="/test/login 2.html">Panel | </a>
+  <a href="/test/IMG/Consentimiento.pdf" download>Consentimiento | </a>
+  <a href="/test/clasificacionesanteriores.html">Clasifiaciónes años anteriores</a>
+
+  <!-------------TABLA-------------->
+
+</nav>
+<header>
+  <h1>Balon de oro</h1>
+</header>
+<table id="Clasificación" class="demo">
+  <thead>
+    <tr class="header-table">
+      <th class="header-table-container tlt-2"></th>
+      <th class="header-table-container tlt-1">Participantes</th>
+      <th class="header-table-container">Pibas</th>
+      <th class="header-table-container">Puntos</th>
+    </tr>
+  </thead>
+  <tbody id="tablita" class="contenedor123"></tbody>
+</table>
+
+<section id="porgrupos">
+  <header>
+    <h1>Equipos</h1>
+  </header>
+  <table id="Clasificación" class="demo">
+    <thead>
+      <tr class="header-table">
+        <th class="header-table-container tlt-2"></th>
+        <th class="header-table-container tlt-1">Equipos</th>
+        <th class="header-table-container">Pibas</th>
+        <th class="header-table-container">Puntos</th>
+      </tr>
+    </thead>
+    <tbody id="tablita-grupo" class="contenedor123"></tbody>
+  </table>
+</section>
+
+<!--FINALIZA TABLA-->
+
+
+
+
+  <section class="persons" id="persons">
+    <article class="person">
+      <a href="https://instagram.com/abel.mdzz_" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/Abel 1 (Participante).jpg" alt="" />
+        <h2>Abel</h2>
+        <p>Coach</p>
+      </a>
+    </article>
+    <article class="person">
+      <a href="https://instagram.com/acostaaa_22" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/Acosta 2 (Coach).jpg" alt="" />
+        <h2>Acosta</h2>
+        <p>Participante</p>
+      </a>
+    </article>
+    <article class="person">
+      <a href="https://instagram.com/daviiid_tj" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/David 1 (Participante).jpg" alt="" />
+        <h2>David</h2>
+        <p>Participante</p>
+      </a>
+    </article>
+    <article class="person">
+      <a href="https://instagram.com/iikkerr__" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/Iker (Coach).jpg" alt="" />
+        <h2>Iker</h2>
+        <p>Participante</p>
+      </a>
+    </article>
+    <article class="person">
+      <a href="https://instagram.com/marcos28_lgns" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/Marcos Acosta 1 (Participante).jpg" alt="" />
+        <h2>Marcos Acosta</h2>
+        <p>Participante</p>
+      </a>
+    </article>
+    <article class="person">
+      <a href="https://instagram.com/marcos_44_" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/Marcos Molina 1 (Participante).jpg" alt="" />
+        <h2>Marcos Molina</h2>
+        <p>Participante</p>
+      </a>
+    </article>
+    <article class="person">
+      <a href="https://instagram.com/_moli35_" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/Molinaaa (Coach).jpg" alt="" />
+        <h2>Molina</h2>
+        <p>Participante</p>
+      </a>
+    </article>
+    <article class="person">
+      <a href="https://instagram.com/_.adrixxmn._" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/Mora 1 (Participante).jpg" alt="" />
+        <h2>Mora</h2>
+        <p>Coach</p>
+      </a>
+    </article>
+    <article class="person">
+      <a href="https://instagram.com/__ruubii_" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/Ruben (Participante y coach).jpg" alt="" />
+        <h2>Ruben</h2>
+        <p>Participante</p>
+      </a>
+    </article>
+    <article class="person">
+      <a href="https://instagram.com/alvtorcam" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/Torralba (Participante).jpg" alt="" />
+        <h2>Torralba</h2>
+        <p>Coach</p>
+      </a>
+    </article>
+    <article class="person">
+      <a href="https://instagram.com/izan_rubio" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/Izan (Participante).jpg" alt="" />
+        <h2>Izan</h2>
+        <p>Participante</p>
+      </a>
+    </article>
+    <article class="person">
+      <a href="https://instagram.com/unaiirubioo" target="_blank">
+        <img src="./IMG/Fotos Balon de oro/Unai (Participante).jpg" alt="" />
+        <h2>Unai</h2>
+        <p>Participante</p>
+      </a>
+    </article>
+  </section>
+  
+
+<section id="Reglas" class="reglas">
+  <article class="reglas1">
+    <h2>Reglas:</h2>
+    <ol>
+      <li>Lío: 2</li>
+      <li>Paja/dedos: 4</li>
+      <li>Mamada/cc: 5</li>
+      <li>Follar: 7</li>
+      <li>SI LA PIBA ES FEA/NO ESTA BUENA SE RESTA 1 PUNTO
+      </li>
+      <li>SI LE DAMOS EL VISTO BUENO TODOS ES 1 PUNTO MÁS
+      </li>
+      <li>Si tiene novio depende de como este la piba se le suma 1, 2 o 3, ej: Si es un 1 se le suma 1, si es un 2 se le suman 2 y si es un 3 se le suman 3, es decir, como máximo puedes sumar 11.
+      </li>
+      <li>Si es del mismo grupo se suma 1 punto adicional, si hay una tercera se sumarian 2, si hay una cuarta se sumarian 3 y asi sucesivamente.
+      </li>
+      <li>Trio 2 chicas: +14 puntos más los puntos que sea, es decir si una es un 1 y la otra un 3 serían 4, en total 18 puntos.
+      </li>
+       <ul>9.1 En caso de que una tenga novio se aplicaría la regla de con novio y si la otra tiene novio también.
+       </ul>
+        <ul>9.2 No entra la regla de si es del mismo grupo.
+        </ul>
+      <li>Trio chico y chica: +7 puntos más los puntos que sea, es decir si es un 3 serían en total 10 puntos.
+      </li>
+      <ul>10.1 En caso de que tenga novio se aplicaría la regla de con novio.
+      </ul>
+      <ul>10.2 El chico no cuenta como si fuera un 1, 2, 3 y tampoco afecta a la regla de la novia.
+      </ul>
+      <ul>10.3 Si es tu compañero de equipo se sumará para los 2, es decir, 7 y 7 más los puntos adicionales de la piba, los puntos apareceran en la tabla de individual y de equipos.
+      </ul>
+      <li>Si hay alguna orgia o algo parecido se valorará los puntos correspondientes para ese jugador en base a "pibas/pibes" y "si es un 1, 2 o 3".
+      </li>
+      <ul>11.1 Aquí no entra la norma de si es del mismo grupo.
+      </ul>
+      <ul>11.2 Si es del mismo grupo entra la norma de si es del mismo grupo aunque no lo sea.
+      </ul>
+      <ul>11.3 Si són 5 o menos personas si que cuenta la regla de la novia.
+      </ul>
+      <ul>11.4 Si són mas de 5 personas tampoco entraria la norma de si es un 1, un 2 o un 3 y tampoco entraría la norma de si tiene novio.
+      </ul>
+      <li>
+        Siempre que uno se haga a una y repita con esa haciendo lo mismo no se volverán a sumar los puntos.
+      </li>
+      <ul>
+         12.1 Siempre se prioriza la mayor puntuaciób obtenida por ese jugador.
+      </ul>
+      <ul>
+         12.2 En el caso de que sea con más personas se añadirán los puntos de trio o orgia.
+      </ul>
+      <ul>
+         12.3 Si se hace un trio entra la norma del trio.
+      </ul>
+      <ul>
+         12.4 Si se hace una orgia entra la norma de la orgia.
+      </ul>
+      </li>
+      <li>Putadita -1 punto.
+      </li>
+      </li>
+      <li>Si hay algo mas grave los coachs pondrán la sanción correspondiente.
+      </li>
+      <li>
+        Si hay mentiras sobre lo que has hecho con una chavala sera expulsion inmediata del balon de oro o una perdida muy importante de puntos (nos la pelan los lloros).
+      </li>
+      <li>
+        Si que pueden haber puntos negativos.
+      </li>
+      <li>
+        No se va a permitir hablar del balón de oro, ni enseñar la aplicación que tenemos a una piba, un grupo de pibas o chavales que no conocemos de nada. si se incumple va a ver una sanción de puntos que va a ser decidida por los administradores del juego, además de que se cambiarán las contraseñas para que esa persona no las tenga (nos la pelan los lloros).
+      </li>
+      <li>
+        Si alguien se lia con una con novio y después esta ya no está con el novio y por ejemplo se la folla, en vez de ser 9 puntos (si la chavala es un 2) serían 7 puntos.
+      </li>
+      <li>
+        Siempre que pase algo que no esté escrito en las reglas, se valorará teniendo en cuenta todas las normas.
+      </li>
+      <ul>
+         19.1 Desde el balón de oro, durante la competición se pueden cambiar normas o crear nuevas.
+      </ul>
+      <li>
+        En caso de empate se dará por ganado el balón de oro ya sea en la tabla individual o de equipos al que menos pibas se haya hecho.
+      </li>
+  </article>
+</section>
+<section class="ganadores" id="ganadores">
+  <article class="ganadores1">
+    <h2>GANADORES BALON DE ORO INDIVIDUAL:</h2>
+    <ul>
+      <li>2020: Molina (10 puntos y 3 pibas)</li>
+      <li>2021: Izan (10 puntos y 4 pibas)</li>
+      <li>2022: Ruben (58 puntos y 15 pibas)</li>
+      <li>2023: Ruben (41 puntos y 13 pibas)</li>
+      <li>2024: ???</li>
+    </ul>
+  </article>
+</section>
+
+<section class="ganadores" id="ganadores">
+  <article class="ganadores1">
+    <h2>GANADORES BALON DE ORO EQUIPOS:</h2>
+    <ul>
+      <li>2022: Izan y Mora (73 puntos y 14 pibas)</li>
+      <li>2023: Ruben y Unai (50 puntos y 17 pibas)</li>
+      <li>2024: ???</li>
+    </ul>
+  </article>
+</section>
+
+<section>
+  <h1 style="text-align: center;font-size: 15px;margin-top: 30px">
+    Esta página web es para echarse unas risas entre colegas, en ningun
+    momento hay malas intenciones de querer ofender a ninguna mujer ni
+    ocasionar daños.
+  </h1>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  
+<html>
